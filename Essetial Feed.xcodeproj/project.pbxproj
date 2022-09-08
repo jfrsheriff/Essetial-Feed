@@ -18,6 +18,8 @@
 		127126F428C641EC0077B433 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127126F328C641EC0077B433 /* FeedItem.swift */; };
 		127126F628C642090077B433 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127126F528C642090077B433 /* FeedLoader.swift */; };
 		127126F928C642E10077B433 /* RemoteFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127126F828C642E10077B433 /* RemoteFeedLoaderTests.swift */; };
+		12CAAE2728CA399C0009666C /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CAAE2628CA399C0009666C /* RemoteFeedLoader.swift */; };
+		12CAAE2828CA39BA0009666C /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CAAE2628CA399C0009666C /* RemoteFeedLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,7 @@
 		127126F528C642090077B433 /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 		127126F728C642E00077B433 /* CITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		127126F828C642E10077B433 /* RemoteFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoaderTests.swift; sourceTree = "<group>"; };
+		12CAAE2628CA399C0009666C /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,7 @@
 				127126C428C63F4A0077B433 /* AppDelegate.swift */,
 				127126C628C63F4A0077B433 /* SceneDelegate.swift */,
 				127126C828C63F4A0077B433 /* ViewController.swift */,
+				12CAAE2528CA39870009666C /* Feed API */,
 				127126F228C641C20077B433 /* Feed Feature */,
 				127126CA28C63F4A0077B433 /* Main.storyboard */,
 				127126CD28C63F4C0077B433 /* Assets.xcassets */,
@@ -133,6 +137,14 @@
 				127126F528C642090077B433 /* FeedLoader.swift */,
 			);
 			path = "Feed Feature";
+			sourceTree = "<group>";
+		};
+		12CAAE2528CA39870009666C /* Feed API */ = {
+			isa = PBXGroup;
+			children = (
+				12CAAE2628CA399C0009666C /* RemoteFeedLoader.swift */,
+			);
+			path = "Feed API";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +292,7 @@
 				127126C928C63F4A0077B433 /* ViewController.swift in Sources */,
 				127126C528C63F4A0077B433 /* AppDelegate.swift in Sources */,
 				127126F628C642090077B433 /* FeedLoader.swift in Sources */,
+				12CAAE2728CA399C0009666C /* RemoteFeedLoader.swift in Sources */,
 				127126C728C63F4A0077B433 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12CAAE2828CA39BA0009666C /* RemoteFeedLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,6 +576,7 @@
 		127126F028C63F5D0077B433 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -586,6 +601,7 @@
 		127126F128C63F5D0077B433 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
