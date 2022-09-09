@@ -123,10 +123,10 @@ class RemoteFeedLoaderTests: XCTestCase {
                                 imageURL: imageURL)
         
         let feedJson : [String : Any] = [
-            "id" : feedItem.id.uuidString,
-            "description" : feedItem.description,
-            "location" : feedItem.location,
-            "image" : feedItem.imageURL.absoluteString
+            "id" : id.uuidString,
+            "description" : description,
+            "location" : location,
+            "image" : imageURL.absoluteString
         ].reduce(into: [String : Any]()) { accumulatedDict, cur in
             if let val = cur.value{
                 accumulatedDict[cur.key] = val
