@@ -36,7 +36,7 @@ class RemoteFeedLoaderTests: XCTestCase {
     func test_load_deliversErrorOnClientError(){
         let (sut,client) = makeSUT()
         
-        self.expect(sut, toCompleteWithError: .connectivity) {
+        self.expect(sut, toCompleteWithResult: .failure(.connectivity)) {
             let clientError = NSError(domain: "Test", code: 0)
             client.complete(with: clientError)
         }
@@ -48,7 +48,7 @@ class RemoteFeedLoaderTests: XCTestCase {
         let samples = [199,201,300,400,500]
         
         samples.enumerated().forEach { index, code in
-            self.expect(sut, toCompleteWithError: .invalidData) {
+            self.expect(sut, toCompleteWithResult: .failure(.invalidData) ) {
                 client.complete(withStatusCode: code, at: index)
             }
         }
@@ -56,7 +56,7 @@ class RemoteFeedLoaderTests: XCTestCase {
     
     func test_load_deliversErrorOn200HTTPResponseWithInvalidJson(){
         let (sut,client) = makeSUT()
-        self.expect(sut, toCompleteWithError: .invalidData) {
+        self.expect(sut, toCompleteWithResult: .failure(.invalidData) ) {
             let invalidJsonData = Data.init("Invalid Json".utf8)
             client.complete(withStatusCode: 200, data: invalidJsonData)
         }
@@ -64,16 +64,12 @@ class RemoteFeedLoaderTests: XCTestCase {
     
     func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJsonList(){
         let (sut,client) = makeSUT()
-        var capturedResults = [RemoteFeedLoader.Result]()
-        sut.load(){
-            capturedResults.append($0)
+        
+        self.expect(sut,
+                    toCompleteWithResult: .success([])) {
+            let emptyJsonList = Data(bytes: "{\"items\": []}".utf8)
+            client.complete(withStatusCode: 200, data: emptyJsonList)
         }
-        
-        let emptyJsonList = Data(bytes: "{\"items\": []}".utf8)
-        client.complete(withStatusCode: 200, data: emptyJsonList)
-        
-        XCTAssertEqual(capturedResults, [.success([])])
-         
     }
     
     // MARK: - Helpers
@@ -84,7 +80,7 @@ class RemoteFeedLoaderTests: XCTestCase {
     }
     
     private func expect(_ sut : RemoteFeedLoader ,
-                        toCompleteWithError error: RemoteFeedLoader.Error ,
+                        toCompleteWithResult result: RemoteFeedLoader.Result ,
                         when action : () -> Void ,
                         file: StaticString = #filePath,
                         line: UInt = #line ){
@@ -94,7 +90,7 @@ class RemoteFeedLoaderTests: XCTestCase {
             capturedResults.append($0)
         }
         action()
-        XCTAssertEqual(capturedResults, [.failure(error)] ,file: file,line: line)
+        XCTAssertEqual(capturedResults, [result] ,file: file,line: line)
     }
     
     
