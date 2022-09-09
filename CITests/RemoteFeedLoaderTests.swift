@@ -75,12 +75,12 @@ class RemoteFeedLoaderTests: XCTestCase {
                         file: StaticString = #filePath,
                         line: UInt = #line ){
         
-        var capturedErrors = [RemoteFeedLoader.Error]()
+        var capturedResults = [RemoteFeedLoader.Result]()
         sut.load(){
-            capturedErrors.append($0)
+            capturedResults.append($0)
         }
         action()
-        XCTAssertEqual(capturedErrors, [error],file: file,line: line)
+        XCTAssertEqual(capturedResults, [.failure(error)] ,file: file,line: line)
     }
     
     
