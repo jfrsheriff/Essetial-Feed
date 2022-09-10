@@ -131,7 +131,7 @@
 		127126E828C63F5D0077B433 /* CITests */ = {
 			isa = PBXGroup;
 			children = (
-				127126F828C642E10077B433 /* RemoteFeedLoaderTests.swift */,
+				12CFFBD728CC6C3B00AEB18A /* Feed API */,
 				127126F728C642E00077B433 /* CITests-Bridging-Header.h */,
 			);
 			path = CITests;
@@ -152,6 +152,14 @@
 				12CAAE2628CA399C0009666C /* RemoteFeedLoader.swift */,
 				12CFFBD428CC610300AEB18A /* FeedItemsMapper.swift */,
 				12CFFBD128CC606E00AEB18A /* HTTPClient.swift */,
+			);
+			path = "Feed API";
+			sourceTree = "<group>";
+		};
+		12CFFBD728CC6C3B00AEB18A /* Feed API */ = {
+			isa = PBXGroup;
+			children = (
+				127126F828C642E10077B433 /* RemoteFeedLoaderTests.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
