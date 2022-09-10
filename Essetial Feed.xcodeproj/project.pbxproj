@@ -23,6 +23,8 @@
 		12CAAE2828CA39BA0009666C /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CAAE2628CA399C0009666C /* RemoteFeedLoader.swift */; };
 		12CFFBD228CC606E00AEB18A /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CFFBD128CC606E00AEB18A /* HTTPClient.swift */; };
 		12CFFBD328CC608100AEB18A /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CFFBD128CC606E00AEB18A /* HTTPClient.swift */; };
+		12CFFBD528CC610300AEB18A /* FeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CFFBD428CC610300AEB18A /* FeedItemsMapper.swift */; };
+		12CFFBD628CC614C00AEB18A /* FeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CFFBD428CC610300AEB18A /* FeedItemsMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,7 @@
 		127126F828C642E10077B433 /* RemoteFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoaderTests.swift; sourceTree = "<group>"; };
 		12CAAE2628CA399C0009666C /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
 		12CFFBD128CC606E00AEB18A /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		12CFFBD428CC610300AEB18A /* FeedItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				12CAAE2628CA399C0009666C /* RemoteFeedLoader.swift */,
+				12CFFBD428CC610300AEB18A /* FeedItemsMapper.swift */,
 				12CFFBD128CC606E00AEB18A /* HTTPClient.swift */,
 			);
 			path = "Feed API";
@@ -296,6 +300,7 @@
 				127126F428C641EC0077B433 /* FeedItem.swift in Sources */,
 				127126C928C63F4A0077B433 /* ViewController.swift in Sources */,
 				127126C528C63F4A0077B433 /* AppDelegate.swift in Sources */,
+				12CFFBD528CC610300AEB18A /* FeedItemsMapper.swift in Sources */,
 				12CFFBD228CC606E00AEB18A /* HTTPClient.swift in Sources */,
 				127126F628C642090077B433 /* FeedLoader.swift in Sources */,
 				12CAAE2728CA399C0009666C /* RemoteFeedLoader.swift in Sources */,
@@ -310,6 +315,7 @@
 				12AEC27728CB2F25005E3287 /* FeedItem.swift in Sources */,
 				12CAAE2828CA39BA0009666C /* RemoteFeedLoader.swift in Sources */,
 				12CFFBD328CC608100AEB18A /* HTTPClient.swift in Sources */,
+				12CFFBD628CC614C00AEB18A /* FeedItemsMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
