@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12069B1128CCDEE30059675C /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127126F528C642090077B433 /* FeedLoader.swift */; };
 		127126C528C63F4A0077B433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127126C428C63F4A0077B433 /* AppDelegate.swift */; };
 		127126C728C63F4A0077B433 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127126C628C63F4A0077B433 /* SceneDelegate.swift */; };
 		127126C928C63F4A0077B433 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127126C828C63F4A0077B433 /* ViewController.swift */; };
@@ -323,6 +324,7 @@
 				12AEC27728CB2F25005E3287 /* FeedItem.swift in Sources */,
 				12CAAE2828CA39BA0009666C /* RemoteFeedLoader.swift in Sources */,
 				12CFFBD328CC608100AEB18A /* HTTPClient.swift in Sources */,
+				12069B1128CCDEE30059675C /* FeedLoader.swift in Sources */,
 				12CFFBD628CC614C00AEB18A /* FeedItemsMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
