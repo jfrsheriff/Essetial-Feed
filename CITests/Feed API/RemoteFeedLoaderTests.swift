@@ -8,6 +8,7 @@
 import XCTest
 import CI
 
+
 class RemoteFeedLoaderTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromUrl(){
