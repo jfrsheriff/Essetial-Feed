@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		12069B1128CCDEE30059675C /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127126F528C642090077B433 /* FeedLoader.swift */; };
+		124B86AE28D2483F00A36FE4 /* XCTTestCase+MemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124B86AD28D2483F00A36FE4 /* XCTTestCase+MemoryLeak.swift */; };
 		127126C528C63F4A0077B433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127126C428C63F4A0077B433 /* AppDelegate.swift */; };
 		127126C728C63F4A0077B433 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127126C628C63F4A0077B433 /* SceneDelegate.swift */; };
 		127126C928C63F4A0077B433 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127126C828C63F4A0077B433 /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		124B86AD28D2483F00A36FE4 /* XCTTestCase+MemoryLeak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTTestCase+MemoryLeak.swift"; sourceTree = "<group>"; };
 		127126C128C63F4A0077B433 /* Essetial Feed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Essetial Feed.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		127126C428C63F4A0077B433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		127126C628C63F4A0077B433 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		124B86AC28D2481B00A36FE4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				124B86AD28D2483F00A36FE4 /* XCTTestCase+MemoryLeak.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		127126B828C63F4A0077B433 = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +172,7 @@
 		12CFFBD728CC6C3B00AEB18A /* Feed API */ = {
 			isa = PBXGroup;
 			children = (
+				124B86AC28D2481B00A36FE4 /* Helpers */,
 				127126F828C642E10077B433 /* RemoteFeedLoaderTests.swift */,
 				12A5307B28CF269D00735B64 /* URLSessionHTTPClientTests.swift */,
 			);
@@ -336,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				124B86AE28D2483F00A36FE4 /* XCTTestCase+MemoryLeak.swift in Sources */,
 				127126F928C642E10077B433 /* RemoteFeedLoaderTests.swift in Sources */,
 				12A5307C28CF269D00735B64 /* URLSessionHTTPClientTests.swift in Sources */,
 			);
