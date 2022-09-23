@@ -26,7 +26,6 @@ public class URLSessionHTTPClient {
             }else{
                 completion(.failure(UexpectedValuesRepresentation()))
             }
-            
         }.resume()
     }
 }
@@ -60,35 +59,53 @@ class URLSessionHTTPClientTests: XCTestCase {
     
     
     func test_getFromUrl_failsOnRequestError(){
-        
-        let error = NSError(domain: "A Error", code: 1)
-                
-        URLProtocolStub.stub(data: nil, response: nil, error: error)
-        
-        let expectation = expectation(description: "Wait For Completion")
-        
-        makeSUT().get(from: anyUrl()){ result in
-            switch result{
-                case let .failure(receivedError as NSError) :
-                    XCTAssertEqual(receivedError.domain, error.domain)
-                    XCTAssertEqual(receivedError.code, error.code)
-                default :
-                    XCTFail("Expected failure with error \(error), but got \(result)")
-            }
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 1.0)
+        let requestError = NSError(domain: "A Error", code: 1)
+        let receivedError = resultErrorFor(data: nil, reponse: nil, error: requestError) as? NSError
+        XCTAssertEqual(receivedError?.domain , requestError.domain)
     }
     
     
-    func test_getFromUrl_failsOnAllNilValues(){
-        URLProtocolStub.stub(data: nil, response: nil, error: nil)
+    func test_getFromUrl_failsOnAllInvalidRepresentationCases(){
+        XCTAssertNotNil(resultErrorFor(data: nil, reponse: nil, error: nil) as? NSError)
+        XCTAssertNotNil(resultErrorFor(data: nil, reponse: nonHTTPUrlResponse() , error: nil) as? NSError)
+        XCTAssertNotNil(resultErrorFor(data: nil, reponse: anyHTTPUrlResponse() , error: nil) as? NSError)
+        XCTAssertNotNil(resultErrorFor(data: anyData(), reponse: nil , error: nil) as? NSError)
+        XCTAssertNotNil(resultErrorFor(data: anyData(), reponse: nil , error: anyNSError()) as? NSError)
+        XCTAssertNotNil(resultErrorFor(data: nil, reponse: nonHTTPUrlResponse() , error: anyNSError()) as? NSError)
+        XCTAssertNotNil(resultErrorFor(data: nil, reponse: anyHTTPUrlResponse(), error: anyNSError()) as? NSError)
+        XCTAssertNotNil(resultErrorFor(data: anyData(), reponse: nonHTTPUrlResponse() , error: anyNSError()) as? NSError)
+        XCTAssertNotNil(resultErrorFor(data: anyData(), reponse: anyHTTPUrlResponse(), error: anyNSError()) as? NSError)
+        XCTAssertNotNil(resultErrorFor(data: anyData(), reponse: nonHTTPUrlResponse() , error: nil) as? NSError)
+    }
+    
+    private func anyData() -> Data{
+        Data("Invalid Json".utf8)
+    }
+    
+    private func anyNSError() -> NSError{
+        NSError(domain: "An Error", code: 0)
+    }
+    
+    private func nonHTTPUrlResponse() -> URLResponse{
+        URLResponse(url: anyUrl(), mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
+    }
+    private func anyHTTPUrlResponse() -> HTTPURLResponse{
+        HTTPURLResponse(url: anyUrl(), statusCode: 200, httpVersion: nil, headerFields: nil)!
+    }
+    
+    // MARK: - Helpers
+    
+    private func resultErrorFor(data : Data?, reponse : URLResponse? , error : Error?, file: StaticString = #filePath, line: UInt = #line) -> Error? {
+        URLProtocolStub.stub(data: data, response: reponse, error: error)
 
+        var receivedError : Error? = nil
         let expectation = expectation(description: "Wait For Completion")
+        let sut = makeSUT(file:file,line:line)
         
-        makeSUT().get(from: anyUrl()){ result in
+        sut.get(from: anyUrl()){ result in
             switch result{
-                case .failure:
+                case let .failure(error):
+                    receivedError = error
                     break
                 default :
                     XCTFail("Expected failure , got \(result)")
@@ -96,6 +113,7 @@ class URLSessionHTTPClientTests: XCTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 1.0)
+        return receivedError
     }
     
     
