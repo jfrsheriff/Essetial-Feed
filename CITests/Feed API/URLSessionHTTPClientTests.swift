@@ -23,7 +23,10 @@ public class URLSessionHTTPClient {
             
             if let error = error {
                 completion(.failure(error))
-            }else{
+            }else if let data = data,data.count > 0,let response = response as? HTTPURLResponse{
+                completion(.success(data, response))
+            }
+            else{
                 completion(.failure(UexpectedValuesRepresentation()))
             }
         }.resume()
@@ -76,6 +79,26 @@ class URLSessionHTTPClientTests: XCTestCase {
         XCTAssertNotNil(resultErrorFor(data: anyData(), reponse: nonHTTPUrlResponse() , error: anyNSError()) as? NSError)
         XCTAssertNotNil(resultErrorFor(data: anyData(), reponse: anyHTTPUrlResponse(), error: anyNSError()) as? NSError)
         XCTAssertNotNil(resultErrorFor(data: anyData(), reponse: nonHTTPUrlResponse() , error: nil) as? NSError)
+    }
+    
+    func test_getFromUrl_suceedsOnHTTPUrlResponseWithDate(){
+        let data = anyData()
+        let response = anyHTTPUrlResponse()
+
+        URLProtocolStub.stub(data: data, response: response, error: nil)
+        let exp = expectation(description: "Wait For Completion")
+        makeSUT().get(from: anyUrl()) { result in
+            switch result{
+                case let .success(receivedData, receivedURLResponse) :
+                    XCTAssertEqual(receivedData, data)
+                    XCTAssertEqual(receivedURLResponse.url, response.url)
+                    XCTAssertEqual(receivedURLResponse.statusCode, response.statusCode)
+                default:
+                    XCTFail("")
+            }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
     }
     
     private func anyData() -> Data{
