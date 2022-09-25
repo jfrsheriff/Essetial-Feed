@@ -9,7 +9,7 @@ import XCTest
 import CI
 
 
-public class URLSessionHTTPClient {
+public class URLSessionHTTPClient : HTTPClient {
     private let session : URLSession
     
     public init( _ session : URLSession = .shared) {
@@ -18,7 +18,7 @@ public class URLSessionHTTPClient {
     
     private struct UexpectedValuesRepresentation : Error {}
     
-    func get(from url : URL, completion : @escaping (HTTPClientResult) -> Void){
+    public func get(from url : URL, completion : @escaping (HTTPClientResult) -> Void){
         session.dataTask(with: url) { data, response, error in
             
             if let error = error {
@@ -157,7 +157,7 @@ class URLSessionHTTPClientTests: XCTestCase {
     }
     
     
-    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> URLSessionHTTPClient{
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> HTTPClient{
         let sut = URLSessionHTTPClient()
         trackForMemoryLeak(sut, file: file, line: line)
         return sut
