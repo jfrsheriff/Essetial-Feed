@@ -4,10 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AllTest.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>CI.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
+		</dict>
+		<key>CIAPIEndToEndTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Essetial Feed.xcscheme_^#shared#^_</key>
 		<dict>
@@ -17,12 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>127126C028C63F4A0077B433</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>127126DC28C63F5D0077B433</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>127126E328C63F5D0077B433</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>12977C2628E1F0AE0060F70A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
